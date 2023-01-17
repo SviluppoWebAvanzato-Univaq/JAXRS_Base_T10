@@ -1,7 +1,7 @@
 # JAXRS_Base_T10
-> Template project for RESTful API with JAX-RS (Jersey) on JakartaEE9 and Tomcat 10
+> Template project for RESTful APIs with JAX-RS (Jersey) on JakartaEE9 and Tomcat 10
 
-This is the skeleton of a Java web application configured to publish a RESTful API (with a sample resource) running on JAkartaEE 9 and Tomcat 10
+This is the skeleton of a Java web application configured to publish a RESTful API (with a sample resource) running on JakartaEE 9 and Tomcat 10
  
 ## Usage
 
