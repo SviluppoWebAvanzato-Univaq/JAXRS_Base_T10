@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JAX-RS template application</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>JAX-RS template application</h1>
+        <p>This is a template web application based on <strong>JakartaEE 9</strong> that runs on Apache <strong>Tomcat 10</strong> with <strong>Java 14</strong> or above.</p>
+        <p> The application is configured to expose RESTful resources through the <strong>JAX-RS</strong> reference implementation, <strong>Jersey</strong> (version 3, for Jakarta EE).</p>
+        <p> JAX-RS JSON serialization is handled by the <strong>Jackson</strong> JSON Provider (version 2, for Jakarta EE).</p>
+
+        <p>The application also shows:</p>
+        <ul>
+            <li>how to <strong>perform the basic JAX-RS environment setup</strong> (class <em>org.univaq.swa.framework.base.RESTApp</em>)</li>
+            <li>how to implement a simple <strong>resource class</strong> (class <em>org.univaq.swa.examples.resources.SimpleRes</em>)</li>
+            <li>how to implement a simple <strong>login resource class</strong> to issue an access token (class <em>org.univaq.swa.framework.security.AutenticazioneRes</em>)</li>
+            <li>how to implement a simple <strong>WebApplicationException</strong> (class <em>org.univaq.swa.framework.base.RESTWebApplicationException</em>)</li>
+            <li>how to implement <strong>Jackson custom serializers and deserializers</strong> for Java classes (package <em>org.univaq.swa.framework.jackson</em>).</li>
+            <li>how to implement a custom <strong>exception mapper</strong> (class <em>org.univaq.swa.framework.security.AppExceptionMapper</em>)</li>
+            <li>how to implement a <strong>filter to handle CORS preflight requests</strong> (class <em>org.univaq.swa.framework.security.CORSFilter</em>)</li>
+            <li>how to declare a <strong>JAX-RS authentication annotation</strong> (class <em>org.univaq.swa.framework.security.AuthLevel1</em>)</li>
+            <li>how to implement a <strong>filter to handle JAX-RS authentication annotations</strong> (class <em>org.univaq.swa.framework.security.AuthLevel1Filter</em>)</li>
+        </ul>
+
+        <p>The RESTful resources, grouped under the /rest prefix, and are the following:</p>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Path</th>
+                    <th>Method</th>
+                    <th>Parameters</th>
+                    <th>Payload</th>
+                    <th>Authentication</th>
+                    <th>URL to Try</th>
+                    <th>Expected result</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="2">/simple</td>
+                    <td>GET</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="rest/simple"><small>GET rest/simple</small></a></td>
+                    <td>a list of greetings</td>
+                </tr>
+                <tr>
+                    <td>POST</td>
+                    <td></td>
+                    <td>any string</td>
+                    <td></td>
+                    <td></td>
+                    <td>the URL to item 1000</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">/simple/{item}</td>
+                    <td rowspan="2">GET</td>
+                    <td rowspan="2">item: [0-9]+</td>
+                    <td rowspan="2"></td>
+                    <td rowspan="2"></td>
+                    <td><a href="rest/simple/14000"><small>GET rest/simple/14000</small></a></td>
+                    <td>200 with the item</td>
+                </tr>
+                <tr>
+                    <td><a href="rest/simple/14"><small>GET rest/simple/14</small></a></td>
+                    <td>404</td>
+                </tr>
+                <tr>
+                    <td >/auth/login</td>
+                    <td>POST</td>
+                    <td></td>
+                    <td>form-encoded username and password</td>
+                    <td></td>
+                    <td></td>
+                    <td>200 with an access token included in header, cookie and payload</td>
+                </tr>
+                <tr>
+                    <td >/auth/logout</td>
+                    <td>DELETE</td>
+                    <td></td>
+                    <td></td>
+                    <td>AuthLevel1</td>
+                    <td></td>
+                    <td>204</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
