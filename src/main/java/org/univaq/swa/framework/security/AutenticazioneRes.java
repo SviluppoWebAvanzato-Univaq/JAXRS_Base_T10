@@ -40,11 +40,11 @@ public class AutenticazioneRes {
             if (authenticateUser(username, password)) {
                 String authToken = issueToken(uriinfo, username);
                 //return Response.ok(authToken).build();
-                //return Response.ok().cookie(new NewCookie("token", authToken)).build();
+                //return Response.ok().cookie(new NewCookie.Builder("token").value(authToken).build())
                 //return Response.ok().header(HttpHeaders.AUTHORIZATION, "Bearer " + authToken).build();
                 //Restituiamolo in tutte le modalità, giusto per fare un esempio..
                 return Response.ok(authToken)
-                        .cookie(new NewCookie("token", authToken))
+                        .cookie(new NewCookie.Builder("token").value(authToken).build())
                         .header(HttpHeaders.AUTHORIZATION, "Bearer " + authToken).build();
             }
         } catch (Exception e) {

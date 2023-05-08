@@ -10,6 +10,7 @@ import org.univaq.swa.framework.jackson.ObjectMapperContextResolver;
 import org.univaq.swa.framework.security.AppExceptionMapper;
 import org.univaq.swa.framework.security.CORSFilter;
 import org.univaq.swa.examples.resources.SimpleRes;
+import org.univaq.swa.framework.security.AutenticazioneRes;
 
 /**
  *
@@ -25,7 +26,7 @@ public class RESTApp extends Application {
         //aggiungiamo tutte le *root resurces* (cioè quelle
         //con l'annotazione Path) che vogliamo pubblicare
         c.add(SimpleRes.class);
-        //c.add(AutenticazioneRes.class);
+        c.add(AutenticazioneRes.class);
 
         //aggiungiamo il provider Jackson per poter
         //usare i suoi servizi di serializzazione e 

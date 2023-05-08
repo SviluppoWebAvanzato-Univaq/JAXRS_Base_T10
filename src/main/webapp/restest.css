@@ -1,0 +1,25 @@
+.rest-test-ok {
+    color: green;
+}
+.rest-test-ok:before {
+    content: '\2705';
+}
+.rest-test-error {
+    color: red;
+}
+.rest-test-error:before {
+    content: '\274c';
+}
+.rest-test-wait:before {
+    content: '\231b';
+}
+
+.rest-test-message-ok,.rest-test-message-error  {
+    display: none;
+}
+.rest-test-error-all .rest-test-message-error {
+    display: block;
+}
+.rest-test-ok-all .rest-test-message-ok {
+    display: block;
+}

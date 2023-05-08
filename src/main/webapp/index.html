@@ -4,10 +4,11 @@
         <title>JAX-RS template application</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="restest.css"/>
     </head>
     <body>
         <h1>JAX-RS template application</h1>
-        <p>This is a template web application based on <strong>JakartaEE 10</strong> that runs on Apache <strong>Tomcat 10</strong> with <strong>Java 14</strong> or above.</p>
+        <p>This is a template web application based on <strong>JakartaEE 10</strong> that runs on Apache <strong>Tomcat 10.1</strong> with <strong>Java 14</strong> or above.</p>
         <p> The application is configured to expose RESTful resources through the <strong>JAX-RS</strong> reference implementation, <strong>Jersey</strong> (version 3, for Jakarta EE).</p>
         <p> JAX-RS JSON serialization is handled by the <strong>Jackson</strong> JSON Provider (version 2, for Jakarta EE).</p>
 
@@ -35,7 +36,7 @@
                     <th>Payload</th>
                     <th>Authentication</th>
                     <th>URL to Try</th>
-                    <th>Expected result</th>
+                    <th>(Expected) Result</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,16 +46,16 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><a href="rest/simple"><small>GET rest/simple</small></a></td>
-                    <td>a list of greetings</td>
+                    <td><a data-rest-test data-rest-test-target="#r0" href="rest/simple"><small>GET rest/simple</small></a></td>
+                    <td id="r0">a list of greetings</td>
                 </tr>
                 <tr>
                     <td>POST</td>
                     <td></td>
                     <td>any string</td>
                     <td></td>
-                    <td></td>
-                    <td>the URL to item 1000</td>
+                    <td><span data-rest-test-target="#r1" data-rest-test-method="post" data-rest-test-payoad="testtest"  data-rest-test-status="201" data-rest-test-url="rest/simple"></span></td>
+                    <td id="r1">the URL to item 1000</td>
                 </tr>
                 <tr>
                     <td rowspan="2">/simple/{item}</td>
@@ -62,12 +63,12 @@
                     <td rowspan="2">item: [0-9]+</td>
                     <td rowspan="2"></td>
                     <td rowspan="2"></td>
-                    <td><a href="rest/simple/14000"><small>GET rest/simple/14000</small></a></td>
-                    <td>200 with the item</td>
+                    <td><a data-rest-test data-rest-test-target="#r2" href="rest/simple/14000"><small>GET rest/simple/14000</small></a></td>
+                    <td id="r2">200 with the item</td>
                 </tr>
                 <tr>
-                    <td><a href="rest/simple/14"><small>GET rest/simple/14</small></a></td>
-                    <td>404</td>
+                    <td><a data-rest-test data-rest-test-status="404" data-rest-test-target="#r3" href="rest/simple/14"><small>GET rest/simple/14</small></a></td>
+                    <td id="r3">404</td>
                 </tr>
                 <tr>
                     <td >/auth/login</td>
@@ -75,19 +76,27 @@
                     <td></td>
                     <td>form-encoded username and password</td>
                     <td></td>
-                    <td></td>
-                    <td>200 with an access token included in header, cookie and payload</td>
+                    <td><span data-rest-test-token data-rest-test-target="#r4"  data-rest-test-url="rest/auth/login" data-rest-test-method="post" data-rest-test-status="200"
+                              data-rest-test-content-type="application/x-www-form-urlencoded" data-rest-test-payload="username=u&password=p"></span></td>
+                    <td id="r4">200 with an access token included in header, cookie and payload</td>
                 </tr>
                 <tr>
                     <td >/auth/logout</td>
                     <td>DELETE</td>
                     <td></td>
                     <td></td>
-                    <td>AuthLevel1</td>
+                    <td>Bearer token</td>
                     <td></td>
                     <td>204</td>
                 </tr>
             </tbody>
         </table>
+
+        <script src="restest.js">/* */</script>
+        <script>
+            let tester = new Restest();
+            tester.testAll();
+
+        </script>
     </body>
 </html>
