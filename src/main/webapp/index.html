@@ -4,7 +4,7 @@
         <title>JAX-RS template application</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="restest.css"/>
+        <link rel="stylesheet" href="res/restest.css"/>
     </head>
     <body>
         <h1>JAX-RS template application</h1>
@@ -86,13 +86,31 @@
                     <td></td>
                     <td></td>
                     <td>Bearer token</td>
-                    <td></td>
-                    <td>204</td>
+                    <td><span data-rest-test-auth="1000" data-rest-test-target="#r5"  data-rest-test-url="rest/auth/logout" data-rest-test-method="delete" data-rest-test-status="204"></span></td>
+                    <td id="r5">204</td>
                 </tr>
             </tbody>
+
+
+
         </table>
 
-        <script src="restest.js">/* */</script>
+        <p>
+            <em>Note that this project includes a Javascript library that automatically checks the above endpoints when this webpage is opened. This library
+                is not part of the JAX-RS framework and is not required to implement RESTful resources, and has been developed only as an aid for the
+                sample resources included in this teample project.</em>
+        </p>
+        <div style="border: 1px solid gray; margin: 1em auto; padding: 1em; font-weight: bold">
+            <span class="rest-test-message-error" style="color: red">
+                ERROR - some tested endpoints did not return the expected result
+
+            </span>
+            <span class="rest-test-message-ok" style="color: green">
+                OK - all tested endpoints returned the correct result
+            </span>
+        </div>
+
+        <script src="res/restest.js">/* */</script>
         <script>
             let tester = new Restest();
             tester.testAll();
