@@ -15,6 +15,6 @@ import java.lang.annotation.Target;
 @NameBinding
 @Retention(RUNTIME)
 @Target({ElementType.METHOD,ElementType.TYPE})
-public @interface AuthLevel1 {
+public @interface Logged {
     
 }

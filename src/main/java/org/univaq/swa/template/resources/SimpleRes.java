@@ -1,4 +1,4 @@
-package org.univaq.swa.examples.resources;
+package org.univaq.swa.template.resources;
 
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -13,7 +13,7 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.UriInfo;
 import java.util.ArrayList;
 import java.util.List;
-import org.univaq.swa.framework.base.RESTWebApplicationException;
+import org.univaq.swa.template.exceptions.RESTWebApplicationException;
 
 /**
  *

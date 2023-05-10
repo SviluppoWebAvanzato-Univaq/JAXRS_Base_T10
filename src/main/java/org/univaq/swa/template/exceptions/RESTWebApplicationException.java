@@ -1,4 +1,4 @@
-package org.univaq.swa.framework.base;
+package org.univaq.swa.template.exceptions;
 
 import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.core.Response;

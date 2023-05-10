@@ -1,4 +1,4 @@
-package org.univaq.swa.framework.base;
+package org.univaq.swa.template.base;
 
 import com.fasterxml.jackson.jakarta.rs.json.JacksonJsonProvider;
 import java.util.Collections;
@@ -7,10 +7,11 @@ import java.util.Set;
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
 import org.univaq.swa.framework.jackson.ObjectMapperContextResolver;
-import org.univaq.swa.framework.security.AppExceptionMapper;
+import org.univaq.swa.template.exceptions.AppExceptionMapper;
 import org.univaq.swa.framework.security.CORSFilter;
-import org.univaq.swa.examples.resources.SimpleRes;
-import org.univaq.swa.framework.security.AutenticazioneRes;
+import org.univaq.swa.template.resources.SimpleRes;
+import org.univaq.swa.framework.security.AuthenticationRes;
+import org.univaq.swa.framework.security.AuthLoggedFilter;
 
 /**
  *
@@ -26,7 +27,7 @@ public class RESTApp extends Application {
         //aggiungiamo tutte le *root resurces* (cioè quelle
         //con l'annotazione Path) che vogliamo pubblicare
         c.add(SimpleRes.class);
-        c.add(AutenticazioneRes.class);
+        c.add(AuthenticationRes.class);
 
         //aggiungiamo il provider Jackson per poter
         //usare i suoi servizi di serializzazione e 
@@ -37,7 +38,8 @@ public class RESTApp extends Application {
         c.add(ObjectMapperContextResolver.class);
 
         //esempio di autenticazione
-        //c.add(AuthLevel1Filter.class);
+        c.add(AuthLoggedFilter.class);
+        
         //aggiungiamo il filtro che gestisce gli header CORS
         c.add(CORSFilter.class);
 
