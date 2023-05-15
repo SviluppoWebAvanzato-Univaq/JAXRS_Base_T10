@@ -12,6 +12,7 @@ import org.univaq.swa.framework.security.CORSFilter;
 import org.univaq.swa.template.resources.SimpleRes;
 import org.univaq.swa.framework.security.AuthenticationRes;
 import org.univaq.swa.framework.security.AuthLoggedFilter;
+import org.univaq.swa.template.exceptions.JacksonExceptionMapper;
 
 /**
  *
@@ -43,8 +44,9 @@ public class RESTApp extends Application {
         //aggiungiamo il filtro che gestisce gli header CORS
         c.add(CORSFilter.class);
 
-        //esempio di exception mapper, che mappa in Response eccezioni non già derivanti da WebApplicationException
+        //esempi di exception mapper, che mappano in Response eccezioni non già derivanti da WebApplicationException
         c.add(AppExceptionMapper.class);
+        c.add(JacksonExceptionMapper.class);
 
         classes = Collections.unmodifiableSet(c);
     }
