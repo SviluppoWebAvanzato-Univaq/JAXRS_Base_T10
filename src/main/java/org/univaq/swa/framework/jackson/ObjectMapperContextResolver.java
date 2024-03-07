@@ -40,7 +40,7 @@ public class ObjectMapperContextResolver implements ContextResolver<ObjectMapper
         mapper.registerModule(customSerializer);
 
         //per il supporto alla serializzazione automatica dei tipi Date/Time di Java 8 (LocalDate, LocalTime, ecc.)
-        //è necessario aggiungere alle dipendenze la libreria com.fasterxml.jackson.jakarta.rs:jackson-jakarta-rs-json-provider
+        //è necessario aggiungere alle dipendenze la libreria com.fasterxml.jackson.datatype:jackson-datatype-jsr310
         //questa feature fa cercare a Jackson tutti i moduli compatibili inseriti nel contesto...
         mapper.findAndRegisterModules();
 
